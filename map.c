@@ -15,10 +15,11 @@ static char **map_handler(char **new_map, int flag)
 		map = new_map;
 	}
 	else if (flag == e_GET_MAP)
+	{
 		return (map);
+	}
 	return (NULL);
 }
-
 
 char	**get_map(void)
 {
