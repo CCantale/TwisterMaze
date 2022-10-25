@@ -9,7 +9,7 @@ void    level1(void)
                     "       \033[0;33m@\033[0m moves with IJKL\n"
                     "\n"
                     "           ________________________________________\n"
-                    "          |                                        |\n"
+                    "          |                        quit game with Q|\n"
                     "          |                                        |\n"
                     "          |                                        |\n"
                     "          |                                        |\n"
