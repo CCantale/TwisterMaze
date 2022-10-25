@@ -5,10 +5,9 @@
 # include <conio.h>
 # include "common.h"
 
-void    move_up(void);
-void    move_down(void);
-void    move_left(void);
-void    move_right(void);
+void move_player_one(char c);
+void move_player_two(char c);
 void	ft_exit(void);
+void	print_map(void);
 
 #endif

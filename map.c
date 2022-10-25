@@ -1,8 +1,9 @@
 #include "headers/map.h"
 
-static char	*next_map_line(int line);
 void	free_map(void);
-// end of static declarations
+short 	contains_player(int line);
+void print_player_line(char *line);
+////////////////
 
 static char **map_handler(char **new_map, int flag)
 {
@@ -15,11 +16,10 @@ static char **map_handler(char **new_map, int flag)
 		map = new_map;
 	}
 	else if (flag == e_GET_MAP)
-	{
 		return (map);
-	}
 	return (NULL);
 }
+
 
 char	**get_map(void)
 {
@@ -43,26 +43,67 @@ void 	init_map(void)
 
 void	print_map(void)
 {
-	int	i;
+	int		i;
+	char	**map;
 
 	system("cls");
+	map = get_map();
 	i = 0;
-	while (get_map()[i])
+	while (map[i])
 	{
-		printf("%s\n", get_map()[i]);
+		if (contains_player(i) == TRUE)
+			print_player_line(map[i]);
+		else
+			printf("%s\n", map[i]);
 		++i;
 	}
 }
 
-void	free_map(void)
+short contains_player(int line)
+{
+	if (line == get_pl_y(PLAYER_ONE) || line == get_pl_y(PLAYER_TWO))
+		return (TRUE);
+	return (FALSE);
+}
+
+void print_player_line(char *line)
 {
 	int	i;
 
 	i = 0;
-	while (get_map()[i])
+	while (line[i])
 	{
-		ft_free(get_map()[i]);
+		if (line[i] == PLAYER_ONE_CHAR)
+		{
+			printf(CYAN);
+			write(1, "@", 1);
+			printf(ENDCOLOR);
+		}
+		else if (line[i] == PLAYER_TWO_CHAR)
+		{
+			printf(YELLOW);
+			write(1, "@", 1);
+			printf(ENDCOLOR);
+		}
+		else
+		{
+			write(1, &line[i], 1);
+		}
 		++i;
 	}
-	ft_free(get_map());
+	write(1, "\n", 1);
+}
+
+void	free_map(void)
+{
+	int		i;
+	char	**map;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_free(map[i]);
+		++i;
+	}
+	ft_free(map);
 }

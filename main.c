@@ -8,6 +8,5 @@ int	main(void)
 	init_player();
 	print_map();
 	start_game();
-	ft_exit();
 	return (0);
 }

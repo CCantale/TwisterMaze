@@ -1,47 +1,58 @@
 #include "headers/moves.h"
 
-static void     move(void)
+void move_player_one(char c)
 {
-    edit_map_xy(PLAYER_CHAR, get_pl_x(), get_pl_y());
-    print_map();
+    if (c == 'w')
+        move_up(PLAYER_ONE);
+    else if (c == 's')
+        move_down(PLAYER_ONE);
+    else if (c == 'a')
+        move_left(PLAYER_ONE);
+    else if (c == 'd')
+        move_right(PLAYER_ONE);
 }
 
-void   move_up(void)
+void move_player_two(char c)
 {
-    if (get_map()[get_pl_y() - 1][get_pl_x()] == ' ')
+    if (c == 'i')
+        move_up(PLAYER_TWO);
+    else if (c == 'k')
+        move_down(PLAYER_TWO);
+    else if (c == 'j')
+        move_left(PLAYER_TWO);
+    else if (c == 'l')
+        move_right(PLAYER_TWO);
+
+}
+
+void   move_up(int player)
+{
+    if (get_map()[get_pl_y(player) - 1][get_pl_x(player)] == ' ')
     {
-        edit_map_xy(' ', get_pl_x(), get_pl_y());
-        move_player_to(get_pl_x(), get_pl_y() - 1);
-        move();
+        move_player_to(player, get_pl_x(player), get_pl_y(player) - 1);
     }
 }
 
-void   move_down(void)
+void   move_down(int player)
 {
-    if (get_map()[get_pl_y() + 1][get_pl_x()] == ' ')
+    if (get_map()[get_pl_y(player) + 1][get_pl_x(player)] == ' ')
     {
-        edit_map_xy(' ', get_pl_x(), get_pl_y());
-        move_player_to(get_pl_x(), get_pl_y() + 1);
-        move();
+        move_player_to(player, get_pl_x(player), get_pl_y(player) + 1);
     }
 }
 
-void   move_left(void)
+void   move_left(int player)
 {
-    if (get_map()[get_pl_y()][get_pl_x() - 1] == ' ')
+    if (get_map()[get_pl_y(player)][get_pl_x(player) - 1] == ' ')
     {
-        edit_map_xy(' ', get_pl_x(), get_pl_y());
-        move_player_to(get_pl_x() - 1, get_pl_y());
-        move();
+        move_player_to(player, get_pl_x(player) - 1, get_pl_y(player));
     }
 }
 
-void   move_right(void)
+void   move_right(int player)
 {
-    if (get_map()[get_pl_y()][get_pl_x() + 1] == ' ')
+    if (get_map()[get_pl_y(player)][get_pl_x(player) + 1] == ' ')
     {
-        edit_map_xy(' ', get_pl_x(), get_pl_y());
-        move_player_to(get_pl_x() + 1, get_pl_y());
-        move();
+        move_player_to(player, get_pl_x(player) + 1, get_pl_y(player));
     }
 }
