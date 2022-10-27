@@ -11,6 +11,9 @@ void    move_up(int player);
 void    move_down(int player);
 void    move_left(int player);
 void    move_right(int player);
+void	ft_exit(void);
+int     set_goal(int player);
+void    unset_goal(int player);
 
 
 #endif

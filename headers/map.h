@@ -1,13 +1,12 @@
 #ifndef MAP_H
 # define MAP_H
 
-# include <stdlib.h>
 # include "common.h"
 # include "colors.h"
 
 void    level1(void);
-void	*ft_malloc(size_t size);
-void	ft_free(void *ptr);
+void	print_map(void);
+void	free_map(void);
 
 enum	e_map
 {

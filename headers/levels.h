@@ -4,8 +4,7 @@
 # include "common.h"
 
 void	edit_map(char **new_map);
-char	*alloc_string(char *str);
 char	**ft_split(char *str);
-void	ft_free(void *ptr);
+void    set_pl_gate(int player, int line);
 
 #endif
