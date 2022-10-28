@@ -7,7 +7,22 @@ short contains_special(int line)
 		|| line == get_pl_y(PLAYER_TWO)
 		|| line == pl_gate_pos(PLAYER_ONE)
 		|| line == pl_gate_pos(PLAYER_TWO)
+		|| is_randomizer(line)
 		);
+}
+
+int	is_randomizer(int line)
+{
+	int	randomizers_pos;
+
+	randomizers_pos = get_rand_pos();
+	while (randomizers_pos)
+	{
+		if (randomizers_pos % 100 == line)
+			return (TRUE);
+		randomizers_pos /= 100;
+	}
+	return (FALSE);
 }
 
 void print_special_line(char *line)
@@ -24,7 +39,6 @@ void print_special_line(char *line)
 			else
 				printf(YELLOW);
 			write(1, "@", 1);
-			printf(ENDCOLOR);
 		}
 		else if (line[i] == PLAYER_ONE_GATE || line[i] == PLAYER_TWO_GATE)
 		{
@@ -33,12 +47,17 @@ void print_special_line(char *line)
 			else
 				printf(YELLOW);
 			write(1, "=", 1);
-			printf(ENDCOLOR);
+		}
+		else if (line[i] == KEY_RANDOMIZER)
+		{
+			printf(RED);
+			write(1, "?", 1);
 		}
 		else
 		{
 			write(1, &line[i], 1);
 		}
+		printf(ENDCOLOR);
 		++i;
 	}
 	write(1, "\n", 1);
@@ -67,6 +86,7 @@ void	free_map(void)
 	int		i;
 	char	**map;
 
+	map = get_map();
 	i = 0;
 	while (map[i])
 	{

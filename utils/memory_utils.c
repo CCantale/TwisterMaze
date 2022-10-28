@@ -3,7 +3,11 @@
 void	ft_exit(void)
 {
 	free_map();
-	exit(0);
+	system("cls");
+	printf("\n\n\n\n\n\n\n\n\n"
+			"                   YAY! YOU WON. NOW GO BACK TO WORK!!!"
+			"\n\n\n\n\n\n\n\n\n");
+			exit(0);
 }
 
 void 	*ft_malloc(size_t size)

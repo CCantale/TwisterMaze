@@ -2,6 +2,7 @@
 # define MAIN_H
 
 # include <stdlib.h>
+# include <time.h>
 # include "common.h"
 
 void	init_map(void);

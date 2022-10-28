@@ -14,6 +14,9 @@ void    move_right(int player);
 void	ft_exit(void);
 int     set_goal(int player);
 void    unset_goal(int player);
+char    get_pl_key(int player, int key);
+void    check_end_level(int player, char dest);
+void    rand_keys(void);
 
 
 #endif

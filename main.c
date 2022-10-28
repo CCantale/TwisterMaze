@@ -2,8 +2,9 @@
 
 int	main(void)
 {
-	char	**map;
+	time_t t;
 
+	srand((unsigned)time(&t));
 	init_map();
 	init_player();
 	print_map();
