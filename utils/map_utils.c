@@ -1,13 +1,22 @@
 #include "..\headers\utils\map_utils.h"
 
+void	gotoxy(int x, int y)
+{
+	COORD	coord;
+
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
 short contains_special(int line)
 {
 	return (
-		line == get_pl_y(PLAYER_ONE)
-		|| line == get_pl_y(PLAYER_TWO)
-		|| line == pl_gate_pos(PLAYER_ONE)
-		|| line == pl_gate_pos(PLAYER_TWO)
-		|| is_randomizer(line)
+			line == get_pl_y(PLAYER_ONE)
+			|| line == get_pl_y(PLAYER_TWO)
+			|| line == pl_gate_pos(PLAYER_ONE)
+			|| line == pl_gate_pos(PLAYER_TWO)
+			|| is_randomizer(line)
 		);
 }
 
@@ -79,6 +88,7 @@ void	print_map(void)
 			printf("%s\n", map[i]);
 		++i;
 	}
+	gotoxy(0, 0);
 }
 
 void	free_map(void)

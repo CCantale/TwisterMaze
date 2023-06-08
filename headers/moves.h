@@ -1,7 +1,10 @@
 #ifndef MOVES_H
 # define MOVES_H
 
+# include <unistd.h>
 # include "common.h"
+# include "utils/map_utils.h"
+# include "colors.h"
 
 char	**get_map(void);
 int     get_pl_x(int player);

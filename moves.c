@@ -25,6 +25,24 @@ void move_player_two(char c)
 
 }
 
+static void	erase(int x, int y)
+{
+	gotoxy(x, y);
+	write(STDOUT_FILENO, " ", 1);
+}
+
+static void	print_player(int player, int x, int y)
+{
+	gotoxy(x, y);
+	if (player == PLAYER_ONE)
+		printf(CYAN);
+	else
+		printf(YELLOW);
+	write(STDOUT_FILENO, "@", 1);
+	printf(ENDCOLOR);
+	gotoxy(0, 0);
+}
+
 void   move_up(int player)
 {
     char    dest;
@@ -34,7 +52,9 @@ void   move_up(int player)
     {
         if (dest == KEY_RANDOMIZER)
             rand_keys();
+	erase(get_pl_x(player), get_pl_y(player));
         move_player_to(player, get_pl_x(player), get_pl_y(player) - 1);
+	print_player(player, get_pl_x(player), get_pl_y(player));
         unset_goal(player);
     }
     check_end_level(player, dest);
@@ -49,7 +69,9 @@ void   move_down(int player)
     {
         if (dest == KEY_RANDOMIZER)
             rand_keys();
+	erase(get_pl_x(player), get_pl_y(player));
         move_player_to(player, get_pl_x(player), get_pl_y(player) + 1);
+	print_player(player, get_pl_x(player), get_pl_y(player));
         unset_goal(player);
     }
     check_end_level(player, dest);
@@ -64,7 +86,9 @@ void   move_left(int player)
     {
         if (dest == KEY_RANDOMIZER)
             rand_keys();
+	erase(get_pl_x(player), get_pl_y(player));
         move_player_to(player, get_pl_x(player) - 1, get_pl_y(player));
+	print_player(player, get_pl_x(player), get_pl_y(player));
         unset_goal(player);
     }
     check_end_level(player, dest);
@@ -79,7 +103,9 @@ void   move_right(int player)
     {
         if (dest == KEY_RANDOMIZER)
             rand_keys();
+	erase(get_pl_x(player), get_pl_y(player));
         move_player_to(player, get_pl_x(player) + 1, get_pl_y(player));
+	print_player(player, get_pl_x(player), get_pl_y(player));
         unset_goal(player);
     }
     check_end_level(player, dest);

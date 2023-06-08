@@ -2,7 +2,7 @@
 
 void           rand_keys(void);
 void           unset_goal(int player);
-/////////////////////////
+/* End of static declarations */
 
 static int    player_struct(int which_one, int x, int y, int mode)
 {
@@ -16,7 +16,7 @@ static int    player_struct(int which_one, int x, int y, int mode)
     else if (mode == e_CHANGE)
     {
         change_pl_pos(player, which_one, x, y);
-        print_map();
+        //print_map();
     }
     else if (mode == e_SET_GATE)
     {

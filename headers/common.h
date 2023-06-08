@@ -14,6 +14,7 @@
 # define FALSE 0
 
 # include <stdio.h>
+# include <stdbool.h>
 
 enum
 {
